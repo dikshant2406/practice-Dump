@@ -41,8 +41,18 @@ class HashMap {
             arr[key] = h ;
         }else {
             auto h = arr[key] ;
+            if(h->key == k) {
+                    h->key = k ;
+                    h->value = v ;
+                    return ;
+                }
             auto prev = arr[key] ;
             while(h->next != nullptr) {
+                if(h->key == k) {
+                    h->key = k ;
+                    h->value = v ;
+                    return ;
+                }
                 prev = h ;
                 h = h->next ;
             }
@@ -105,6 +115,8 @@ int main() {
     mp.put(2,"two") ;
     mp.remove(2) ;
     mp.put(3, "three");
+    cout<<mp.get(3)->value<<endl; 
+    mp.put(3, "four");
     cout<<mp.get(3)->value<<endl; 
 
 }
